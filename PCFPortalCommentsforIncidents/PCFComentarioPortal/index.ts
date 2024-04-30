@@ -48,7 +48,7 @@ export class PCFComentarioPortal implements ComponentFramework.StandardControl<I
 		this.localContainer.appendChild(this.divalertaMensagem);
 		this.localContainer.appendChild(this.divelementForm);
 		this.entityId = (<any>context).page.entityId;
-		console.log(Xrm.Page.getControl<Xrm.Page.LookupControl>("primarycontactid").getAttribute().getValue());
+		console.log(Xrm.Page.getControl<Xrm.Page.LookupControl>("customerid").getAttribute().getValue());
 	}
 	public setTextPorIdioma(): void {
 		let idioma: number = Xrm.Page.context.getUserLcid();
@@ -186,7 +186,7 @@ export class PCFComentarioPortal implements ComponentFramework.StandardControl<I
 	}
 
 	private async criaComentario(descricao: string): Promise<string> {
-		let idContact: string = Xrm.Page.getAttribute<Xrm.Page.LookupAttribute>("primarycontactid").getValue()[0].id;
+		let idContact: string = Xrm.Page.getAttribute<Xrm.Page.LookupAttribute>("customerid").getValue()[0].id;
 		let idSystemUser: string = Xrm.Page.context.getUserId();
 		var entity = {
 			"description": descricao,
